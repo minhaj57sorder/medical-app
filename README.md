@@ -19,3 +19,5 @@ this will write sample data to mongoDB
 ### `npm run data:destroy`
 
 this will destroy all data from mongoDB
+
+see example .env file to create .env file
