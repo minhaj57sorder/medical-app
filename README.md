@@ -20,4 +20,4 @@ this will write sample data to mongoDB
 
 this will destroy all data from mongoDB
 
-see example .env file to create .env file
+see example.env file to create .env file
