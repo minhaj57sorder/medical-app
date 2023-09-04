@@ -1,21 +1,21 @@
 import express from "express";
-import {    getProducts,
-    getProductById,
-    deleteProduct,
-    createProduct,
-    updateProduct,
-    createPorductReview,
-    getTopProducts} from '../controllers/doctorController.js'
+import {    getDoctors,
+    getDoctorById,
+    deleteDoctor,
+    createDoctor,
+    updateDoctor,
+    createDoctorReview,
+    getTopDoctors} from '../controllers/doctorController.js'
     import { admin, protect } from "../middleware/authMiddleware.js"
 const router = express.Router()
 
-router.route('/').get(getProducts).post(protect, admin, createProduct)
-router.route('/topRated').get(getTopProducts)
-router.route('/:id/reviews').post(protect, createPorductReview)
+router.route('/').get(getDoctors).post(protect, admin, createDoctor)
+router.route('/topRated').get(getTopDoctors)
+router.route('/:id/reviews').post(protect, createDoctorReview)
 router.route('/:id')
-    .get(getProductById)
-    .delete(protect,admin, deleteProduct)
-    .put(protect, admin, updateProduct)
+    .get(getDoctorById)
+    .delete(protect,admin, deleteDoctor)
+    .put(protect, admin, updateDoctor)
 
 
 

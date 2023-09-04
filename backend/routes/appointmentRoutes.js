@@ -5,7 +5,7 @@ import {
     deleteAppointment,
     createAppointment,
     updateAppointment
-} from '../controllers/doctorController.js'
+} from '../controllers/appointmentController.js'
     import { admin, protect } from "../middleware/authMiddleware.js"
 const router = express.Router()
 

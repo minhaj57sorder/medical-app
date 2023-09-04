@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import morgan from 'morgan'
 import connectDB from './config/db.js'
 import doctorRouter from './routes/doctorRoutes.js'
+import appointmentRoute from './routes/appointmentRoutes.js'
 import userRouter from './routes/userRoutes.js'
 import uploadRouter from './routes/uploadRoutes.js'
 import { errorHandler, notFound } from './middleware/errorMiddleware.js'
@@ -19,7 +20,7 @@ if(process.env.NODE_ENV === 'development'){
     app.use(morgan('dev'))
 }
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5004
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
@@ -43,11 +44,11 @@ app.use('/api/users', userRouter)
 // Doctor router fetch doctors
 app.use('/api/doctors', doctorRouter)
 
+// Appointment router fetch appointments
+app.use('/api/appointment', appointmentRoute)
+
 // Upload router
 app.use('/api/upload', uploadRouter)
-
-// Paypal router
-app.get('/api/config/paypal', (req,res)=>res.send(process.env.PAYPAL_CLIENT_ID))
 
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 
