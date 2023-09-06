@@ -93,17 +93,17 @@ const updateAppointment = expressAsyncHandler(async (req, res) => {
 // @acess Privet/Admin
 const createAppointment = expressAsyncHandler(async (req, res) => {
     const appointment = new Appointment({
-        user: req.user,
-        doctor: req.doctor,
-        name: req.name,
-        phone: req.phone,
-        address: req.address,
-        desease: req.desease,
-        bookingTime: req.bookingTime,
-        visitingFeePaid: req.visitingFeePaid,
-        visitingFee: req.visitingFee,
-        paymentType: req.paymentType,
-        transactionId: req.transactionId,
+        user: req.body.user,
+        doctor: req.body.doctor,
+        name: req.body.name,
+        phone: req.body.phone,
+        address: req.body.address,
+        desease: req.body.desease,
+        bookingTime: req.body.bookingTime,
+        visitingFeePaid: req.body.visitingFeePaid,
+        visitingFee: req.body.visitingFee,
+        paymentType: req.body.paymentType,
+        transactionId: req.body.transactionId,
 
     })
     const createdAppointment = await appointment.save()

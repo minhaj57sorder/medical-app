@@ -45,7 +45,7 @@ const doctorSchema = new mongoose.Schema({
         default: 0
     },
     time: {
-        type: Number,
+        type: String,
         required: true,
         default: '00:00 am'
     },

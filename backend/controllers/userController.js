@@ -6,7 +6,7 @@ const authUser =  expressAsyncHandler(async (req, res) => {
     const {email, password} = req.body
     const user = await User.findOne({email})
     if(user && await user.matchPassword(password)){
-        res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+        // res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
         res.json({
           _id: user._id,
           name: user.name,
@@ -16,7 +16,7 @@ const authUser =  expressAsyncHandler(async (req, res) => {
           token: generateToken(user._id),
         })
       }else{
-      res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+      // res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
       res.status(401)
       // res.json({message:"error"})
       throw new Error('Invalid email or password')
@@ -24,7 +24,7 @@ const authUser =  expressAsyncHandler(async (req, res) => {
 })
 
 const registerUser = expressAsyncHandler(async (req, res) => {
-    const { name, email, password } = req.body
+    const { name, email, password, id } = req.body
   
     const userExists = await User.findOne({ email })
     
@@ -36,6 +36,7 @@ const registerUser = expressAsyncHandler(async (req, res) => {
     }
   
     const user = await User.create({
+      userid: id,
       name,
       email,
       password,

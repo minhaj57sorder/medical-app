@@ -8,7 +8,6 @@ import appointmentRoute from './routes/appointmentRoutes.js'
 import userRouter from './routes/userRoutes.js'
 import uploadRouter from './routes/uploadRoutes.js'
 import { errorHandler, notFound } from './middleware/errorMiddleware.js'
-
 connectDB()
 dotenv.config()
 
