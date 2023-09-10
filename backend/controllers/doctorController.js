@@ -128,13 +128,13 @@ const getTopDoctors = expressAsyncHandler(async (req, res) => {
 const createDoctor = expressAsyncHandler(async (req, res) => {
     const doctor = new Doctor({
         user: req.user._id,
-        name: 'Doctor name',
-        image: '/images/sample.jpg',
-        description: 'Sample description',
-        degree: 'Sample degree',
-        speachiality: 'Sample speachiality',
-        visitingFee: 0,
-        time: '00:00 am',
+        name: req.body.name,
+        image: req.body.image,
+        description: req.body.description,
+        degree: req.body.degree,
+        speachiality: req.body.speachiality,
+        visitingFee: req.body.visitingFee,
+        time: req.body.time,
         rating: 0,
         numReviews: 0,
 

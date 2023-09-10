@@ -95,8 +95,11 @@ const createAppointment = expressAsyncHandler(async (req, res) => {
     const appointment = new Appointment({
         user: req.body.user,
         doctor: req.body.doctor,
-        name: req.body.name,
-        phone: req.body.phone,
+        fristName: req.body.name,
+        lastName: req.body.name,
+        gender: req.body.gender,
+        number: req.body.number,
+        date: req.body.date,
         address: req.body.address,
         desease: req.body.desease,
         bookingTime: req.body.bookingTime,
