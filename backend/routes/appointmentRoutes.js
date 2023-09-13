@@ -9,11 +9,11 @@ import {
     import { admin, protect } from "../middleware/authMiddleware.js"
 const router = express.Router()
 
-router.route('/').get(getAppointments).post(protect, admin, createAppointment)
+router.route('/').get(getAppointments).post(protect,createAppointment)
 router.route('/:id')
     .get(getAppointmentById)
-    .delete(protect,admin, deleteAppointment)
-    .put(protect, admin, updateAppointment)
+    .delete(protect, deleteAppointment)
+    .put(protect, updateAppointment)
 
 
 

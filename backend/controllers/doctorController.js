@@ -15,7 +15,7 @@ const getDoctors = expressAsyncHandler(async (req, res) => {
     } : {}
     const count = await Doctor.countDocuments({ ...keyword })
     const doctors = await Doctor.find({ ...keyword }).limit(pageSize).skip(pageSize * (page - 1))
-    res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+    
     res.status(200).json({ doctors, page, pages: Math.ceil(count / pageSize) })
 })
 
@@ -25,10 +25,10 @@ const getDoctors = expressAsyncHandler(async (req, res) => {
 const getDoctorById = expressAsyncHandler(async (req, res) => {
     const doctor = await Doctor.findById(req.params.id)
     if (doctor) {
-        res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+        
         res.json(doctor)
     } else {
-        res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+        
         res.status(404)
         throw new Error('Doctor not found')
     }
@@ -41,10 +41,10 @@ const deleteDoctor = expressAsyncHandler(async (req, res) => {
     const doctor = await Doctor.findById(req.params.id)
     if (doctor) {
         await doctor.remove()
-        res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+        
         res.json({ message: 'Doctor removed' })
     } else {
-        res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+        
         res.status(404)
         throw new Error('Doctor not found')
     }

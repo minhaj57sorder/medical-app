@@ -8,10 +8,13 @@ import appointmentRoute from './routes/appointmentRoutes.js'
 import userRouter from './routes/userRoutes.js'
 import uploadRouter from './routes/uploadRoutes.js'
 import { errorHandler, notFound } from './middleware/errorMiddleware.js'
+import cors from 'cors'
+
 connectDB()
 dotenv.config()
 
 const app = express()
+app.use(cors())
 
 const __dirname = path.resolve()
 
@@ -33,7 +36,7 @@ app.use(express.urlencoded({ extended: false }))
 // present on the requested resource. If an opaque response serves your needs,
 // set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
 app.get('/cors', (req, res) => {
-    res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.set('Access-Control-Allow-Origin', 'http://localhost:5004');
     res.send({ "msg": "This has CORS enabled 🎈" })
 })
 

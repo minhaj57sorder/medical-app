@@ -15,7 +15,7 @@ const getAppointments = expressAsyncHandler(async (req, res) => {
     } : {}
     const count = await Appointment.countDocuments({ ...keyword })
     const appointments = await Appointment.find({ ...keyword }).limit(pageSize).skip(pageSize * (page - 1))
-    res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+    
     res.status(200).json({ appointments, page, pages: Math.ceil(count / pageSize) })
 })
 
@@ -25,10 +25,10 @@ const getAppointments = expressAsyncHandler(async (req, res) => {
 const getAppointmentById = expressAsyncHandler(async (req, res) => {
     const appointment = await Appointment.findById(req.params.id)
     if (appointment) {
-        res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+        
         res.json(appointment)
     } else {
-        res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+        
         res.status(404)
         throw new Error('Appointment not found')
     }
@@ -41,10 +41,10 @@ const deleteAppointment = expressAsyncHandler(async (req, res) => {
     const appointment = await Appointment.findById(req.params.id)
     if (appointment) {
         await appointment.remove()
-        res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+        
         res.json({ message: 'Appointment removed' })
     } else {
-        res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+        
         res.status(404)
         throw new Error('Appointment not found')
     }

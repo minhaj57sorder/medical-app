@@ -9,13 +9,13 @@ import {    getDoctors,
     import { admin, protect } from "../middleware/authMiddleware.js"
 const router = express.Router()
 
-router.route('/').get(getDoctors).post(protect, admin, createDoctor)
+router.route('/').get(getDoctors).post(protect, createDoctor)
 router.route('/topRated').get(getTopDoctors)
 router.route('/:id/reviews').post(protect, createDoctorReview)
 router.route('/:id')
     .get(getDoctorById)
-    .delete(protect,admin, deleteDoctor)
-    .put(protect, admin, updateDoctor)
+    .delete(protect, deleteDoctor)
+    .put(protect, updateDoctor)
 
 
 
