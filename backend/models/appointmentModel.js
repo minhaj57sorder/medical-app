@@ -12,13 +12,25 @@ const appointmentSchema = new mongoose.Schema({
         required: true,
         ref: 'Doctor'
     },
-    name: {
+    fristName: {
+        type: String,
+        required: true,
+    },
+    lastName: {
+        type: String,
+        required: true,
+    },
+    gender: {
+        type: String,
+        required: true,
+    },
+    date: {
         type: String,
         required: true,
     },
     phone: {
-        type: String,
-        required: true,
+        type: Number,
+        
     },
     address: {
         type: String,
